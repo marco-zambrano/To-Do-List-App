@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand-container">
+            <div class="header__brand-logo">
+                <img src="assets/logo.png" alt="logo">
+            </div>
+            <h2 class="header__brand-name">Task Manager</h2>
+        </div>
+        <div class="header__options-container">
+            <button class="header__option"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" stroke-width="1.25"> <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path> <path d="M21 21l-6 -6"></path> </svg> </button>
+            <button class="header__option"><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+            </svg></button>
+            <a class="header__option" href="#">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile picture">
+            </a>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="categories">
+            <h2>My Categories.</h2>
+            <div class="categories__categories-container">
+                <button class="categories__categories">General</button>
+                <button class="categories__new-categorie-btn">+ New Categorie</button>
+            </div>
+            <button class="categories__new-task-btn">+ New Task</button>
+        </section>
+        <section class="tasks">
+            <div class="tasks__categorie-container">
+                <h2 class="tasks__categorie-title">General.</h2>
+                <button class="tasks__categorie-new-task-btn">New Task</button>
+            </div>
+            <div class="tasks__tasks-container">
+                <div class="tasks__tasks-importance-container">
+                    <h2 class="tasks__tasks-importance-title">Urgent.</h2>
+                    <div class="tasks__individual-task">
+                        <input type="checkbox" name="tarea" id="tarea" class="tasks__individual-checkbox">
+                        <label for="tarea" class="tasks__individual-checkbox-label">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quasi error quia assumenda voluptatibus. Aut error maxime minima aperiam cum aliquam ipsum adipisci asperiores, sit nemo excepturi nesciunt laboriosam nisi.</label>
+                        <p>ene - 18 - 23:00</p>
+                    </div>
+                    <div class="tasks__individual-task">
+                        <input type="checkbox" name="tarea" id="tarea" class="tasks__individual-checkbox">
+                        <label for="tarea" class="tasks__individual-checkbox-label">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum dolor, totam cupiditate molestias accusamus ipsam quas. Officia voluptate temporibus, sint repellendu</label>
+                        <p>abr - 10 - 22:00</p>
+                    </div>
+                </div>
+                <div class="tasks__tasks-importance-container">
+                    <h2 class="tasks__tasks-importance-title">Important.</h2>
+                    <div class="tasks__individual-task">
+                        <input type="checkbox" name="tarea" id="tarea" class="tasks__individual-checkbox">
+                        <label for="tarea" class="tasks__individual-checkbox-label">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </label>
+                        <p>ene - 10 - 23:00</p>
+                    </div>
+                    <div class="tasks__individual-task">
+                        <input type="checkbox" name="tarea" id="tarea" class="tasks__individual-checkbox">
+                        <label for="tarea" class="tasks__individual-checkbox-label">Lorem ipsum dolor sit amet, conse</label>
+                        <p>abr - 10 - 22:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
