@@ -128,10 +128,31 @@ body {
     font-size: 1.5rem;
     margin: 0;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+.categories__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    column-gap: 25px;
 }
 .categories__add-btn {
-    display: none;
+    display: inline;
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 2px var(--base);
+    transition: all .6s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .categories__add-btn svg{
     object-fit: contain;
@@ -149,57 +170,55 @@ body {
     stroke: var(--base);
 }
 .categories__categories-container {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 15px;
-    border-bottom: 1px solid #00000022;
-    overflow: scroll;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    place-content: center;
+    gap: 10px;
+    max-height: 300px;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 0 12px 0 10px;
+    transition: overflow-y 0.5s ease;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #00000022;
 }
 
 .categories__categories-container::-webkit-scrollbar {
-    display: none;
+    width: 4px; 
 }
+.categories__categories-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: 10px; 
+}
+.categories__categories-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.categories__categories-container::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
 .categories__categories {
     background-color: var(--gris);
-    width: 70%;
+    width: 100%;
     height: 40px;
     text-align: center;
-    padding: 5px;
+    padding: 5px 10px;
     font-size: .95rem;
     border-radius: 7px;
-    margin-top: 10px 0;
     border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
     box-shadow: 0px 0px 2px var(--gris);
     transition: all .3s ease;
 }
 .categories__categories:hover {
     background-color: rgb(211, 217, 224);
-    font-weight: 500;
+    text-shadow: 0px 0px .1px #000;
 }
 
-.categories__new-categorie-btn {
-    background-color: var(--base);
-    color: #fff;
-    width: 100%;
-    height: 35px;
-    text-align: center;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 7px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 0px 2px var(--base);
-    transition: all .5s ease;
-}
-.categories__new-categorie-btn:hover {
-    background-color: #211567;
-    text-shadow: 0px 0px 2px var(--fondo);
-
-}
 .categories__new-task-btn {
     background-color: var(--base);
     color: #fff;
@@ -257,7 +276,7 @@ body {
 }
 .tasks__categorie-container button:hover {
     background-color: rgb(211, 217, 224);
-    font-weight: 500;
+    text-shadow: 0px 0px .1px #000;
 }
 .tasks__tasks-container {
     display: flex;
@@ -332,42 +351,38 @@ body {
         position: fixed;
     }
 
-    .categories__add-btn {
-        display: inline;
-        width: 30px;
-        height: 30px;
-        padding: 7px;
-        border: none;
-        border-radius: 6px;
-        background-color: var(--base);
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0px 0px 2px var(--base);
-        transition: all .6s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     .categories__categories-container {
-        min-height: 60vh;
-        max-height: 60vh;
-        min-width: 80%;
+        min-height: 64vh;
+        max-height: 64vh;
+        max-width: 80%;
         padding: 0;
-        padding-left: 15px;
+        padding-left: 30px;
+        display: flex;
         align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        border-bottom: 1px solid #00000022;
+        row-gap: 18px;
     }
 
     .categories__categories {
-        height: 34px;
-        padding-left: 20px;
+        min-height: 35px;
+        min-width: 190px;
+        max-width: 90%;
+        text-align: start;
+        padding: 0;
+        padding-left: 25px;
+        padding-right: 10px;
+        font-size: 15px;
     }
 
     .categories__header {
         display: flex;
         align-items: flex-end;
+        justify-content: flex-start;
         width: 90%;
-        column-gap: 25px;
+        min-width: 276px;
+        padding: 0 15px;
         margin-bottom: 20px;
     }
     .categories__header > h2 {
@@ -388,7 +403,7 @@ body {
 
 @media screen and (min-width: 1000px) {
     .categories {
-        min-width: 30vw;
+        min-width: 28.5vw;
     }
     .tasks {
         margin-left: 30vw;
