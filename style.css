@@ -45,7 +45,6 @@ body {
     object-fit: cover;
     border-radius: 10px;
     border: .1px solid #0000003b;
-    /* background-color: var(--base); */
 }
 .header__brand-container h2 {
     font-size: 15px;
@@ -68,11 +67,23 @@ body {
     border-radius: 6px;
     background-color: var(--gris);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 2px var(--gris);
+    transition: all .6s ease;
+}
+.header__options-container button:hover {
+    background-color: var(--base);
+    box-shadow: 0px 0px 5px var(--base);
 }
 .header__options-container svg {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    transition: all .6s ease;
+}
+.header__options-container button:hover svg {
+    stroke: var(--fondo);
 }
 .header__options-container a {
     width: 35px;
@@ -103,8 +114,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50vw;
-    max-width: 650px;
+    width: 70vw;
+    max-width: 480px;
     min-width: 300px;
 }
 .categories > h2 {
@@ -125,35 +136,61 @@ body {
 .categories__categories {
     background-color: var(--gris);
     width: 70%;
+    height: 40px;
     text-align: center;
     padding: 5px;
-    font-size: .9rem;
+    font-size: .95rem;
     border-radius: 7px;
     margin-top: 10px 0;
     border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px var(--gris);
+    transition: all .3s ease;
 }
+.categories__categories:hover {
+    background-color: rgb(211, 217, 224);
+    font-weight: 500;
+}
+
 .categories__new-categorie-btn {
     background-color: var(--base);
     color: #fff;
     width: 100%;
+    height: 35px;
     text-align: center;
     padding: 5px;
-    font-size: .9rem;
+    font-size: 1rem;
     border-radius: 7px;
     margin: 10px 0;
     border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px var(--base);
+    transition: all .5s ease;
+}
+.categories__new-categorie-btn:hover {
+    background-color: #211567;
+    text-shadow: 0px 0px 2px var(--fondo);
+
 }
 .categories__new-task-btn {
     background-color: var(--base);
     color: #fff;
     width: 50%;
+    height: 35px;
     text-align: center;
     padding: 5px;
-    font-size: .9rem;
+    font-size: 1rem;
     border-radius: 7px;
     margin: 10px 0;
     border: none;
     margin-top: 23px;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px var(--base);
+    transition: all .5s ease;
+}
+.categories__new-task-btn:hover {
+    background-color: #211567;
+    text-shadow: 0px 0px 2px var(--fondo);
 }
 /* ----- CATEGORIES ENDS------ */
 
@@ -178,7 +215,7 @@ body {
     margin: 0;
 }
 .tasks__categorie-container button {
-    font-size: 14px;
+    font-size: 13px;
     margin-right: 35px;
     background-color: var(--gris);
     border: none;
@@ -186,8 +223,14 @@ body {
     text-align: center;
     padding: 5px 15px;
     border-radius: 7px;
+    box-shadow: 0px 0px 2px var(--gris);
+    cursor: pointer;
+    transition: all .3s ease;
 }
-
+.tasks__categorie-container button:hover {
+    background-color: rgb(211, 217, 224);
+    font-weight: 500;
+}
 .tasks__tasks-container {
     display: flex;
     flex-direction: column;
@@ -202,7 +245,6 @@ body {
 .tasks__individual-task {
     font-size: 15px;
     margin-left: 25px;
-    max-width: 80%;
     margin-top: 20px;
 }
 .tasks__individual-task input[type="checkbox"] {
@@ -225,7 +267,7 @@ body {
 .tasks__individual-task input[type="checkbox"]:checked::before {
     content: ''; /* Obligatorio para mostrar pseudo-elementos */
     position: absolute;
-    top: 4px;
+    top: 2.5px;
     left: 6px;
     width: 6px;
     height: 10px;
