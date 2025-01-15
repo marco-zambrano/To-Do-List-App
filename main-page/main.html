@@ -8,13 +8,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main-style.css">
+    <link rel="stylesheet" href="../dialogs/add-style.css">
 </head>
 <body>
     <header class="header">
         <div class="header__brand-container">
             <div class="header__brand-logo">
-                <img src="assets/logo.png" alt="logo">
+                <img src="/assets/logo.png" alt="logo">
             </div>
             <h2 class="header__brand-name">Task Manager</h2>
         </div>
@@ -39,7 +40,7 @@
         </div>
     </header>
 
-    <main class="wrapper">
+    <main class="wrapper" style="display: none;">
         <section class="categories">
             <div class="categories__header">
                 <h2>My Categories.</h2>
@@ -60,19 +61,11 @@
                 </button>
             </div>
             <div class="categories__categories-container">
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
-                <button class="categories__categories">General dsad</button>
+                <button class="categories__categories">School</button>
+                <button class="categories__categories">Gym</button>
+                <button class="categories__categories">Job</button>
             </div>
-            <button class="categories__new-task-btn">+ New Task</button>
+            <button class="categories__new-task-btn" id="new-task">+ New Task</button>
         </section>
         <section class="tasks">
             <div class="tasks__categorie-container">
@@ -137,6 +130,61 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <section class="add">
+        <section class="add__wrapper">
+            <h2>Add a task.</h2>
+            <section class="add__title-form">
+                <label for="add__title">Task.</label>
+                <textarea name="textarea" class="add__task-textarea" placeholder="Write your task"></textarea>
+            </section>
+
+            <section class="add__priority-container">
+                <label for="normal" >
+                    <input type="radio" name="priority" id="normal" checked> 
+                    <span></span>
+                    Normal
+                </label>
+                <label for="important">
+                    <input type="radio" name="priority" id="important"> 
+                    <span></span>
+                    Important
+                </label>
+                <label for="urgent">
+                    <input type="radio" name="priority" id="urgent"> 
+                    <span></span>
+                    Urgent
+                </label>
+            </section>
+
+            <section class="add__atributes-container">
+                <div class="add__atribute">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1"> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M4 11h16"></path> <path d="M11 15h1"></path> <path d="M12 15v3"></path> </svg> 
+                    <div class="add__atribute-text">
+                        <h3>Due Date.</h3>
+                        <p>Select a deadline date for the task <span>(optional)</span></p>
+                    </div>
+                </div>
+                <div class="add__atribute">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1"> <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path> <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"></path> </svg> 
+                    <div class="add__atribute-text">
+                        <h3>Category.</h3>
+                        <Select>
+                            <option value="general">General</option>
+                            <option value="gym">Gym</option>
+                            <option value="school">School</option>
+                        </Select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="add__btns-container">
+                <button class="btn--gray">Cancel</button>
+                <button class="btn--blue">Add Task</button>
+            </section>
+
+        </div>
+    </section>
+
+    <script src="main-script.js"></script>
 </body>
 </html>
