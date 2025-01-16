@@ -1,12 +1,58 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new task</title>
-    <link rel="stylesheet" href="add-style.css">
-</head>
+    <head>
+        <link rel="stylesheet" href="../sections/add-task/add-style.css">
+    </head>
 <body>
-    
+    <section class="add__wrapper">
+        <h2>Add a task.</h2>
+        <section class="add__title-form">
+            <label for="add__title">Task.</label>
+            <textarea name="textarea" class="add__task-textarea" placeholder="Write your task"></textarea>
+        </section>
+
+        <section class="add__priority-container">
+            <label for="normal" >
+                <input type="radio" name="priority" id="normal" checked> 
+                <span></span>
+                Normal
+            </label>
+            <label for="important">
+                <input type="radio" name="priority" id="important"> 
+                <span></span>
+                Important
+            </label>
+            <label for="urgent">
+                <input type="radio" name="priority" id="urgent"> 
+                <span></span>
+                Urgent
+            </label>
+        </section>
+
+        <section class="add__atributes-container">
+            <div class="add__atribute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1"> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M4 11h16"></path> <path d="M11 15h1"></path> <path d="M12 15v3"></path> </svg> 
+                <div class="add__atribute-text">
+                    <h3>Due Date.</h3>
+                    <p>Select a deadline date for the task <span>(optional)</span></p>
+                </div>
+            </div>
+            <div class="add__atribute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1"> <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path> <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"></path> </svg> 
+                <div class="add__atribute-text">
+                    <h3>Category.</h3>
+                    <Select>
+                        <option value="general">General</option>
+                        <option value="gym">Gym</option>
+                        <option value="school">School</option>
+                    </Select>
+                </div>
+            </div>
+        </section>
+
+        <section class="add__btns-container">
+            <button class="btn--gray" id="cancel-btn">Cancel</button>
+            <button class="btn--blue">Add Task</button>
+        </section> 
+    </section>
 </body>
 </html>
