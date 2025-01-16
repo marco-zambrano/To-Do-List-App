@@ -13,12 +13,16 @@ html {
 .add {
     width: 100%;
     padding-top: 90px;
+    display: none;
+    justify-content: center;
 }
 .add__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5px 40px;
+    padding: 0px 10px;
+    width: 90%;
+    position: relative;
 }
 .add__wrapper > h2 {
     margin: 0;
@@ -31,7 +35,7 @@ html {
     width: 100%;
     display: flex;
     flex-direction: column;
-    max-width: 530px;
+    max-width: 600px;
     align-self: flex-start;
     padding-left: 20px;
 }
@@ -196,7 +200,7 @@ html {
     border: none;
     background-color: var(--gris);
     color: #958fb2;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 8.5px;
     max-width: 80%;
     padding: 4px;
@@ -274,6 +278,7 @@ html {
 
     .add__wrapper {
         align-items: flex-start;
+        max-width: 1000px;
         min-width: 65vw;
     }
 

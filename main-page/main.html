@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="../sections/add-task/add-style.css">
     <link rel="stylesheet" href="main-style.css">
-    <link rel="stylesheet" href="../dialogs/add-style.css">
 </head>
 <body>
     <header class="header">
@@ -21,7 +21,7 @@
         </div>
         <div class="header__options-container">
             <button class="header__option"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" stroke-width="1.25"> <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path> <path d="M21 21l-6 -6"></path> </svg> </button>
-            <button class="header__option"><svg
+            <button class="header__option add-task-btn"><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -40,11 +40,11 @@
         </div>
     </header>
 
-    <main class="wrapper" style="display: none;">
+    <main class="wrapper" id="main">
         <section class="categories">
             <div class="categories__header">
                 <h2>My Categories.</h2>
-                <button class="categories__add-btn">
+                <button class="categories__add-btn add-task-btn">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -65,12 +65,12 @@
                 <button class="categories__categories">Gym</button>
                 <button class="categories__categories">Job</button>
             </div>
-            <button class="categories__new-task-btn" id="new-task">+ New Task</button>
+            <button class="categories__new-task-btn add-task-btn" id="new-task">+ New Task</button>
         </section>
         <section class="tasks">
             <div class="tasks__categorie-container">
                 <h2 class="tasks__categorie-title">General.</h2>
-                <button class="tasks__categorie-new-task-btn">+ New Task</button>
+                <button class="tasks__categorie-new-task-btn add-task-btn">+ New Task</button>
             </div>
             <div class="tasks__tasks-container">
                 <div class="tasks__tasks-importance-container">
@@ -130,7 +130,7 @@
         </section>
     </main>
 
-    <section class="add">
+    <section class="add" style="display: none;" id="add">
         <section class="add__wrapper">
             <h2>Add a task.</h2>
             <section class="add__title-form">
@@ -178,13 +178,13 @@
             </section>
 
             <section class="add__btns-container">
-                <button class="btn--gray">Cancel</button>
+                <button class="btn--gray" id="cancel-btn">Cancel</button>
                 <button class="btn--blue">Add Task</button>
-            </section>
-
+            </section> 
         </div>
     </section>
 
     <script src="main-script.js"></script>
+    <script src="../sections/add-task/add-script.js"></script>
 </body>
 </html>
