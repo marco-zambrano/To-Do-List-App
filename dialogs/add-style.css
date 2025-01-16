@@ -31,6 +31,9 @@ html {
     width: 100%;
     display: flex;
     flex-direction: column;
+    max-width: 530px;
+    align-self: flex-start;
+    padding-left: 20px;
 }
 .add__title-form label {
     font-size: 1rem;
@@ -228,7 +231,8 @@ html {
 .add__btns-container {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    column-gap: 40px;
     margin-top: 5px;
     padding-bottom: 25px;
 }
@@ -260,3 +264,46 @@ html {
     text-shadow: 0px 0px 1px var(--fondo);
 }
 /* --- BUTTONS ENDS --- */
+
+
+@media screen and (min-width: 850px){
+    .add {
+        display: flex;
+        justify-content: center;
+    }
+
+    .add__wrapper {
+        align-items: flex-start;
+        min-width: 65vw;
+    }
+
+    /* FORM*/
+    .add__title-form {
+        max-width: 50%;
+        min-width: 440px;
+    }
+
+
+    /* PRIORITY */
+    .add__priority-container {
+        align-items: flex-start;
+        max-width: 90%;
+        min-width: 600px;
+        padding-left: 20px;
+    }
+    .add__priority-container label {
+        width: 90%;
+    }
+
+    /* BUTTONS */
+    .add__btns-container {
+        justify-content: flex-end;
+        column-gap: 20px;
+    }
+
+    .add__btns-container button {
+        width: 110px;
+        height: 30px;
+        font-size: .8rem;
+    }
+}
