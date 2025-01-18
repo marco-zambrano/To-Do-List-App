@@ -46,7 +46,7 @@ html {
 
 .add__task-textarea {
     margin: 10px 0 15px 0;
-    width: 100%;
+    width: 95%;
     resize: none;
     min-height: 85px;
     border: none;
@@ -149,6 +149,7 @@ html {
     row-gap: 3px;
     justify-content: center;
     margin-bottom: 20px;
+    min-height: 381.61px;
 }
 .add__atribute {
     width: 100%;
@@ -157,6 +158,93 @@ html {
     column-gap: 10px;
     padding: 10px 20px;
 }
+
+.add__atribute__calendar-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex-wrap: wrap;
+}
+
+.add__atribute__calendar {
+    align-self: center;
+    padding: 15px;
+    border: .2px solid #00000020;
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px #00000018;
+    margin-bottom: 40px;
+}
+
+#calendar {
+    width: 270px;
+    max-height: 340px;
+}
+.grid {
+    height: 270px;
+}
+
+#calendar-month {
+    width: 100%;
+    height: 100%;
+    --color-accent: var(--base);
+    --color-text-on-accent: var(--fondo);
+}
+#calendar-month {
+    &::part(table) {
+        height: 100%;
+        width: 100%;
+        table-layout: fixed;
+    }
+    &::part(day) {
+        block-size: 2rem;
+        inline-size: 2rem;
+    }
+    &::part(day):hover {
+        background-color: #8390e47f;
+        color: #000;
+    }
+}
+
+
+/* calendar btns previus and next */
+#calendar {
+    svg {
+        width: 20px;
+        height: 20px;
+        border: none;
+        border-radius: 6px;
+    }
+    path {
+        stroke: var(--base);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    &::part(button) {
+        border: none;
+        outline: none;
+        background-color: var(--gris);
+        border-radius: 6px;
+        padding: 2px;
+        transition: all .2s ease-in-out;
+    }
+    &::part(button):hover {
+        background-color: rgb(211, 217, 224);
+        text-shadow: 0px 0px .1px #000;
+    }
+
+    /* &::part(container) {
+        height: 200px;
+    } */
+}
+
+
+
+
+
+
+
+
 .add__atribute__content-container {
     width: 100%;
     display: flex;
@@ -311,6 +399,13 @@ html {
         justify-content: flex-end;
         column-gap: 20px;
     }
+
+
+    .add__atribute__calendar-container {
+        flex-direction: row;
+    }
+
+
 
     .add__btns-container button {
         width: 110px;

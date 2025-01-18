@@ -26,17 +26,25 @@
         </section>
 
         <section class="add__atributes-container">
-            <div class="add__atribute">
-                <div class="add__atribute__content-container">
+            <div class="add__atribute__calendar-container">
+                <div class="add__atribute">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1"> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M4 11h16"></path> <path d="M11 15h1"></path> <path d="M12 15v3"></path> </svg> 
                     <div class="add__atribute-text">
                         <h3>Due Date.</h3>
                         <p>Select a deadline date for the task <span>(optional)</span></p>
                     </div>
                 </div>
-                <div class="add__atribute__calendar-container">
+                <div class="add__atribute__calendar">
                     <calendar-date id="calendar" min="2025-01-01">
-                        <calendar-month></calendar-month>
+                        <svg aria-label="Previous" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+                            <path d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                        </svg>
+                        <svg aria-label="Next" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                        </svg>
+                        <div class="grid">
+                            <calendar-month id="calendar-month"></calendar-month>
+                        </div>
                     </calendar-date>
                 </div>
             </div>
