@@ -157,6 +157,12 @@ html {
     column-gap: 10px;
     padding: 10px 20px;
 }
+.add__atribute__content-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
 .add__atribute svg {
     width: 45px;
     height: 45px;

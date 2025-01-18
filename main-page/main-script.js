@@ -1,7 +1,54 @@
-const newTaskbtn = document.querySelectorAll('.add-task-btn');
-const mainSection = document.getElementById('main');
-const addSection = document.getElementById('add');
+const newTaskbtn = document.querySelectorAll('.new-task-btn');  // new task buttons
+// Page sections
+const mainSection = document.getElementById('main');    
+const addSection = document.getElementById('add');  
+// Categories currently avaible
+const selectCategorieContainer = document.querySelectorAll('.categories__categories');
+// the Categorie Title of my tasks
+const taskCategorieTitle= document.getElementById('tasks__categorie-title');
+//here we save all the tasks
+const taskContainer = document.getElementById('tasks__tasks-container');
 
+
+
+const setTask = () => {
+    if (localStorage.getItem('taskObj')) {
+        const variable = JSON.parse(localStorage.getItem('taskObj'));
+        console.log(variable);
+    } else {
+        console.log('no');
+    }
+}
+
+
+
+
+
+
+const setCategorieTitle = (title) => {
+    taskCategorieTitle.innerText = title;
+}   
+selectCategorieContainer.forEach(categorie => {
+    categorie.addEventListener('click', () => {
+        // console.log(categorie.innerText);
+        setCategorieTitle(categorie.innerText);
+    } )
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Load the add-task section
 const loadAddSection = async () => {
     mainSection.style.display = 'none';
     try {
@@ -10,20 +57,19 @@ const loadAddSection = async () => {
 
         const html = await response.text();
         addSection.innerHTML = html;
+        addSection.style.display = 'flex';
 
-        //Check if this script already exist.
+        //Check if this page script already exist.
         // If we add it again, it will declare the variables over and over, making problems.
         const existingScript = document.querySelector('script[src="../sections/add-task/add-script.js"]');
         if (existingScript) {
             existingScript.remove(); // delete the current script
         }
-
         // create and load a new script 
         const script = document.createElement('script');
         script.type = 'module';
         script.src = '../sections/add-task/add-script.js';
         document.body.appendChild(script);  
-        
         //  execute the logic exported from the script
         script.onload = async () => {
             const {initializateAddScript} = await import('../sections/add-task/add-script.js');
@@ -37,5 +83,4 @@ const loadAddSection = async () => {
 
 newTaskbtn.forEach(btn => {
     btn.addEventListener('click', loadAddSection);
-})
-
+});
