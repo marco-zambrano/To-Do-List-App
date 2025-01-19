@@ -149,7 +149,6 @@ html {
     row-gap: 3px;
     justify-content: center;
     margin-bottom: 20px;
-    min-height: 381.61px;
 }
 .add__atribute {
     width: 100%;
@@ -172,15 +171,16 @@ html {
     border: .2px solid #00000020;
     border-radius: 6px;
     box-shadow: 0px 0px 2px #00000018;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #calendar {
-    width: 270px;
-    max-height: 340px;
+    width: 210px;
+    height: 290px;
+    max-height: 300px;
 }
 .grid {
-    height: 270px;
+    height: 250px;
 }
 
 #calendar-month {
@@ -209,8 +209,8 @@ html {
 /* calendar btns previus and next */
 #calendar {
     svg {
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
         border: none;
         border-radius: 6px;
     }
@@ -232,18 +232,7 @@ html {
         background-color: rgb(211, 217, 224);
         text-shadow: 0px 0px .1px #000;
     }
-
-    /* &::part(container) {
-        height: 200px;
-    } */
 }
-
-
-
-
-
-
-
 
 .add__atribute__content-container {
     width: 100%;
@@ -364,7 +353,7 @@ html {
 /* --- BUTTONS ENDS --- */
 
 
-@media screen and (min-width: 850px){
+@media screen and (min-width: 1045px){
     .add {
         display: flex;
         justify-content: center;
@@ -400,10 +389,59 @@ html {
         column-gap: 20px;
     }
 
+    .add__atribute {
+        width: 340px;
+    }
 
+    #relative-for-btns {
+        width: 90%;
+        padding: 20px;
+        position: relative;
+    }
+
+    .add__atributes-container {
+        min-height: inherit;
+        max-width: 100%;
+        position: relative;
+    }
+    
     .add__atribute__calendar-container {
         flex-direction: row;
+        row-gap: 0;
+        min-width: 95%;
+        position: relative;
     }
+
+    .add__atribute__calendar {
+        position: relative;
+        margin-bottom: 0;
+    }
+
+
+
+
+
+
+    /* WHEN CALENDAR IS CLICKED */
+    .atribute__category {
+        position: absolute;
+        top: 80px;
+    }
+    .atribute__calendar {
+        align-self: flex-start;
+    }
+
+    .add__btns-container {
+        position: absolute;
+        bottom: 15px;
+    }
+    /* IN CASE ENDS */
+
+
+
+
+
+
 
 
 
@@ -412,4 +450,6 @@ html {
         height: 30px;
         font-size: .8rem;
     }
+
+
 }
