@@ -166,6 +166,7 @@ html {
 }
 
 .add__atribute__calendar {
+    display: none;
     align-self: center;
     padding: 15px;
     border: .2px solid #00000020;
@@ -415,35 +416,24 @@ html {
     .add__atribute__calendar {
         position: relative;
         margin-bottom: 0;
+        left: -25px;
     }
 
-
-
-
-
-
     /* WHEN CALENDAR IS CLICKED */
-    .atribute__category {
+    .active .atribute__category {
         position: absolute;
         top: 80px;
     }
-    .atribute__calendar {
+    
+    .active .atribute__calendar {
         align-self: flex-start;
     }
-
-    .add__btns-container {
+    
+    .active .add__btns-container {
         position: absolute;
         bottom: 15px;
     }
     /* IN CASE ENDS */
-
-
-
-
-
-
-
-
 
     .add__btns-container button {
         width: 110px;
