@@ -6,6 +6,7 @@
 }
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -241,6 +242,19 @@ html {
     align-items: center;
     column-gap: 10px;
 }
+
+.add__atribute #link-svg-container {
+    color: #000;
+    text-decoration: none;
+}
+
+#link-svg-container .svg-clicked {
+    background-color: var(--base);
+    stroke: var(--fondo);
+    box-shadow: 0px 0px 3.5px var(--base);
+    transform: scale(1.06);
+}
+
 .add__atribute svg {
     width: 45px;
     height: 45px;
@@ -249,13 +263,20 @@ html {
     border-radius: 6px;
     box-shadow: 0px 0px 3.5px var(--gris);
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 .add__atribute svg:hover {
     background-color: var(--base);
     stroke: var(--fondo);
     box-shadow: 0px 0px 3.5px var(--base);
     transform: scale(1.06);
+}
+.add__atribute svg:active, .add__atribute svg:focus {
+    background-color: var(--base);
+    stroke: var(--fondo);
+    box-shadow: 0px 0px 3.5px var(--base);
+    transform: scale(1.06);
+    outline: none
 }
 
 .add__atribute  .add__atribute-text {
@@ -396,7 +417,7 @@ html {
 
     #relative-for-btns {
         width: 90%;
-        padding: 20px;
+        /* padding: 20px; */
         position: relative;
     }
 
@@ -404,6 +425,7 @@ html {
         min-height: inherit;
         max-width: 100%;
         position: relative;
+        padding-bottom: 20px;
     }
     
     .add__atribute__calendar-container {
@@ -433,8 +455,8 @@ html {
         position: absolute;
         bottom: 15px;
     }
+    
     /* IN CASE ENDS */
-
     .add__btns-container button {
         width: 110px;
         height: 30px;

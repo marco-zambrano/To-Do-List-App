@@ -28,7 +28,9 @@
             <section class="add__atributes-container">
                 <div class="add__atribute__calendar-container ">
                     <div class="add__atribute atribute__calendar">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="calendar-svg"> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M4 11h16"></path> <path d="M11 15h1"></path> <path d="M12 15v3"></path> </svg> 
+                        <a href="#add__atribute__calendar" id="link-svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="calendar-svg"> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M4 11h16"></path> <path d="M11 15h1"></path> <path d="M12 15v3"></path> </svg> 
+                        </a>
                         <div class="add__atribute-text">
                             <h3>Due Date.</h3>
                             <p>Select a deadline date for the task <span>(optional)</span></p>
@@ -52,7 +54,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="categories-svg"> <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path> <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"></path> </svg> 
                     <div class="add__atribute-text">
                         <h3>Category.</h3>
-                        <Select name="add__categorie__selector">
+                        <Select name="add__categorie__selector" id="add__task-select">
                             <option value="general">General</option>
                             <option value="gym">Gym</option>
                             <option value="school">School</option>
