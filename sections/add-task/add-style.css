@@ -254,6 +254,12 @@ html {
     box-shadow: 0px 0px 3.5px var(--base);
     transform: scale(1.06);
 }
+#categories-svg.svg-clicked {
+    background-color: var(--base);
+    stroke: var(--fondo);
+    box-shadow: 0px 0px 3.5px var(--base);
+    transform: scale(1.06);
+}
 
 .add__atribute svg {
     width: 45px;
@@ -320,6 +326,8 @@ html {
 .add__atribute-text select:focus {
     border: none;
     outline: none;
+    appearance: none;
+    border: 2px solid #007bff;
 }
 .add__atribute-text select:hover {
     background-color: rgb(211, 217, 224);

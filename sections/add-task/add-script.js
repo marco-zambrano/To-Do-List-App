@@ -2,45 +2,42 @@ import 'https://unpkg.com/cally';
 // Create an export function that executes this script in the main page
 export function initializateAddScript() {
     const cancelBtn = document.getElementById('cancel-btn');
-
     cancelBtn.addEventListener('click', () => {
         mainSection.style.display = 'flex';
         addSection.innerHTML = '';
     });
-
-    const calendarSvg = document.getElementById('calendar-svg');  
-    const calendarContainer = document.getElementById('add__atribute__calendar');  
+    
     // Fater atributes to apply style to its respective children
     const buttonsFather = document.querySelector('#relative-for-btns');
     const atributesFather = document.querySelector('.add__atributes-container');
-
+    //calendar svg
+    const calendarSvg = document.getElementById('calendar-svg');  
+    const calendarContainer = document.getElementById('add__atribute__calendar');  
+    //categories svg
+    const categoriesContainer = document.getElementById('categories-svg');  //svg
+    const addSelect = document.querySelector('select[name="add__categorie__selector"]');  //select    
+    
     calendarSvg.addEventListener('click', () => {
         calendarSvg.classList.toggle('svg-clicked');
+        if (categoriesContainer.classList.contains('svg-clicked')) categoriesContainer.classList.toggle('svg-clicked');
         // switch calendar container display
-        if (window.getComputedStyle(calendarContainer).display === 'none') {
-            calendarContainer.style.display = 'block';
-        } else {
-            calendarContainer.style.display = 'none';
-        }
+        calendarContainer.style.display = window.getComputedStyle(calendarContainer).display === 'none' ? 'block' : 'none';
         //gives its children the active propieties
         atributesFather.classList.toggle('active');
         buttonsFather.classList.toggle('active');
     })
 
-    const categoriesContainer = document.querySelector('#categories-svg');  //svg
-    const addSelect = document.querySelector('select[name="add__categorie__selector"]');  //select
-    // console.log(categoriesContainer);
-    // console.log(addSelect);
-    
+    categoriesContainer.addEventListener('click', () => {  
+        categoriesContainer.classList.toggle('svg-clicked');
+        // desactivate calendar svg and hide the calendar
+        if (calendarSvg.classList.contains('svg-clicked')) {
+            calendarSvg.classList.toggle('svg-clicked');
+            calendarContainer.style.display = 'none';
+        }
 
-    // categoriesContainer.addEventListener('click', () => {
-    //     addSelect.focus();
-    //     setTimeout(() => {
-    //         // Simulamos una interacción mediante teclado para abrir el select
-    //         const event = new KeyboardEvent("keydown", { key: " ", code: "Space", bubbles: true });
-    //         addSelect.dispatchEvent(event);
-    //     }, 100);
-    // })
+        addSelect.focus();
+
+    })
 
 }
 
