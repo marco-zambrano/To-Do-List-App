@@ -317,30 +317,44 @@ html {
     padding: 4px;
     max-height: 27px;
     border-radius: 6px;
-    font-size: .8rem;
+    font-size: .7rem;
     cursor: pointer;
     box-shadow: 0px 0px 3.5px var(--gris);
-    transition: all .2s ease-in-out;
+    transition: all .15s ease-in-out;
+    font-style: italic;
 }
 
 .add__atribute-text select:focus {
-    border: none;
+    outline: 1px solid var(--gris);
     outline: none;
-    appearance: none;
-    border: 2px solid #007bff;
+    box-shadow: 0px 0px 10px var(--medio);
+    transform: scale(1.04);
+    text-shadow: 0px 0px 5px var(--gris);
 }
 .add__atribute-text select:hover {
     background-color: rgb(211, 217, 224);
 }
 
-.add__atribute-text option {
+#add__task-select option {
     border: none;
-    color: #7f7a98;
+    color: var(--base);
     background-color: var(--gris);
+    font-style: normal;
     font-size: .8rem;
     font-weight: 600;
 }
+#add__task-select option:hover {
+    background-color: var(--base);
+    color: var(--fondo);
+}
 /* ---ATRIBUTES ENDS--- */
+
+
+
+
+
+
+
 
 
 

@@ -15,7 +15,7 @@ export function initializateAddScript() {
     const calendarContainer = document.getElementById('add__atribute__calendar');  
     //categories svg
     const categoriesContainer = document.getElementById('categories-svg');  //svg
-    const addSelect = document.querySelector('select[name="add__categorie__selector"]');  //select    
+    const addSelect = document.querySelector('select[name="add__categorie__selector"]');  //select  
     
     calendarSvg.addEventListener('click', () => {
         calendarSvg.classList.toggle('svg-clicked');
@@ -26,7 +26,7 @@ export function initializateAddScript() {
         atributesFather.classList.toggle('active');
         buttonsFather.classList.toggle('active');
     })
-
+    
     categoriesContainer.addEventListener('click', () => {  
         categoriesContainer.classList.toggle('svg-clicked');
         // desactivate calendar svg and hide the calendar
@@ -34,10 +34,23 @@ export function initializateAddScript() {
             calendarSvg.classList.toggle('svg-clicked');
             calendarContainer.style.display = 'none';
         }
-
-        addSelect.focus();
-
+        addSelect.focus();  //focus select
     })
+    // In case select get or loses focus
+    addSelect.addEventListener('blur', () => {
+        if (categoriesContainer.classList.contains('svg-clicked')) {
+            categoriesContainer.classList.toggle('svg-clicked');
+        }
+    })
+    addSelect.addEventListener('focus', () => {
+        if (!categoriesContainer.classList.contains('svg-clicked')) {
+            categoriesContainer.classList.toggle('svg-clicked');
+        }
+    })
+
+    
+
+
 
 }
 
