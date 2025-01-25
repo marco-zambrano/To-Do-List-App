@@ -11,35 +11,13 @@ const taskContainer = document.getElementById('tasks__tasks-container');
 
 
 
-const setTask = () => {
-    if (localStorage.getItem('taskObj')) {
-        const variable = JSON.parse(localStorage.getItem('taskObj'));
-        console.log(variable);
-    } else {
-        console.log('no');
-    }
+
+
+
+
+const setTask = (task, imp, date, cat) => {
+    
 }
-
-
-
-
-
-
-const setCategorieTitle = (title) => {
-    taskCategorieTitle.innerText = title;
-}   
-selectCategorieContainer.forEach(categorie => {
-    categorie.addEventListener('click', () => {
-        // console.log(categorie.innerText);
-        setCategorieTitle(categorie.innerText);
-    } )
-})
-
-
-
-
-
-
 
 
 
@@ -65,22 +43,45 @@ const loadAddSection = async () => {
         if (existingScript) {
             existingScript.remove(); // delete the current script
         }
+
         // create and load a new script 
         const script = document.createElement('script');
         script.type = 'module';
         script.src = '../sections/add-task/add-script.js';
         document.body.appendChild(script);  
+
         //  execute the logic exported from the script
         script.onload = async () => {
-            const {initializateAddScript} = await import('../sections/add-task/add-script.js');
-            initializateAddScript();    //here it executes
+            try {
+                const {initializateAddScript, getData} = await import('../sections/add-task/add-script.js');
+                initializateAddScript();    //for the dinamical display changer
+                const data = await getData; // new task information
+                const {task, importance, dueDate, categorie} = data;
+                setTask(task, importance, dueDate, categorie);
+            } catch (err) {
+                console.error('Error found: ', err);
+            }
         }
     } catch (error) {
         console.error('Error: ', error);
         addSection.innerHTML = 'Something went wrong opening this content';
     }
-}   
+}  
 
 newTaskbtn.forEach(btn => {
     btn.addEventListener('click', loadAddSection);
 });
+
+
+
+
+//THIS WORKS
+// const setCategorieTitle = (title) => {
+//     taskCategorieTitle.innerText = title;
+// }   
+// selectCategorieContainer.forEach(categorie => {
+//     categorie.addEventListener('click', () => {
+//         // console.log(categorie.innerText);
+//         setCategorieTitle(categorie.innerText);
+//     } )
+// })
