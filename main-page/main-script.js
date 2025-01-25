@@ -8,22 +8,46 @@ const selectCategorieContainer = document.querySelectorAll('.categories__categor
 const taskCategorieTitle= document.getElementById('tasks__categorie-title');
 //here we save all the tasks
 const taskContainer = document.getElementById('tasks__tasks-container');
-
-
-
-
-
-
+// task containers for manipulation
+const importanceContainers = Array.from(document.querySelectorAll('.tasks__tasks-importance-container'));
 
 const setTask = (task, imp, date, cat) => {
-    
+    // in case there are categories 
+    if (importanceContainers) {
+        const importanceBox = importanceContainers.find(cont => cont.id === `${imp}-container`);
+        //In case this container exits
+        if (importanceBox) {
+            const fragment = document.createDocumentFragment(); //use fragments, so we dont manipulate the DOM with each creation
+            //create the task box
+            const taskBox = document.createElement('div');
+            taskBox.classList.add('tasks__individual-task');
+            //create the input 
+            const checkBox = document.createElement('input');
+            checkBox.type = 'checkbox';
+            checkBox.setAttribute('name', 'mi-checkbox');
+            checkBox.setAttribute('id', `${task.slice(0, 5)}`);
+            checkBox.classList.add('tasks__individual-checkbox');
+            fragment.appendChild(checkBox);
+            //create the label 
+            const label = document.createElement('label');
+            label.setAttribute('for', checkBox.id);
+            label.classList.add('tasks__individual-checkbox-label');
+            label.innerText = task;
+            fragment.appendChild(label);
+            //create p for the date
+            const paragraph = document.createElement('p');
+            paragraph.innerText = date ? date :'No due date';
+            fragment.appendChild(paragraph);
+
+            //insert it in the taskBox and in the importance container
+            taskBox.appendChild(fragment);
+            importanceBox.appendChild(taskBox);
+        } else {    //in case this container doesnt exits
+            console.log('no existe');
+        }
+    }
+    // In case it doesnt exits, we have to create it
 }
-
-
-
-
-
-
 
 
 // Load the add-task section
@@ -55,8 +79,9 @@ const loadAddSection = async () => {
             try {
                 const {initializateAddScript, getData} = await import('../sections/add-task/add-script.js');
                 initializateAddScript();    //for the dinamical display changer
-                const data = await getData; // new task information
+                const data = await getData(); // new task functions that gets the promise that resolves the data
                 const {task, importance, dueDate, categorie} = data;
+                // function to create the task
                 setTask(task, importance, dueDate, categorie);
             } catch (err) {
                 console.error('Error found: ', err);

@@ -55,50 +55,59 @@ export function initializateAddScript() {
 }
 
 
-export const getData = new Promise((resolve, reject) => {
-    const logic = () => {
-        const addTaskbtn = document.getElementById('add-task-btn'); // add task button
-        const taskTextArea = document.getElementById('add__task-textarea'); //Text Area
-        const importanceRadio = document.querySelectorAll('input[name="priority"]');
-        const calendar = document.getElementById('calendar'); //calendar
-        const addSelect = document.querySelector('select[name="add__categorie__selector"]');  //select  
+//we create a export function that return a new promise each time
+export const getData = () => {
+    return new Promise (resolve => {
+        const logic = () => {
+            const addTaskbtn = document.getElementById('add-task-btn'); // add task button
+            const taskTextArea = document.getElementById('add__task-textarea'); //Text Area
+            const importanceRadio = document.querySelectorAll('input[name="priority"]');
+            const calendar = document.getElementById('calendar'); //calendar
+            const addSelect = document.querySelector('select[name="add__categorie__selector"]');  //select  
+            // sections
+            const mainSection = document.getElementById('main');
+            const addSection = document.getElementById('add');
+            
+            let data = {};  // here we'll save all the information
         
-        let data = {};  // here we'll save all the information
+            if (!addTaskbtn) {
+                console.error('button not found');
+                return;
+            }
+        
+            addTaskbtn.addEventListener('click', () => {
+                //verifications
+                if (!taskTextArea.value) {
+                    alert('Please enter a task');
+                    return;
+                }
+                if (addSelect.value === 'Select a category') {
+                    alert('Please select a category');
+                    return;
+                }
+                //get the radio checked
+                importanceRadio.forEach(radio => {
+                    if (radio.checked) {
+                        data['importance'] = radio.id;
+                    }
+                });
+                data['task'] = taskTextArea.value;
+                data['dueDate'] = calendar.value;
+                data['categorie'] = addSelect.value;
+                
+                mainSection.style.display = 'flex';
+                addSection.innerHTML = '';
     
-        if (!addTaskbtn) {
-            console.error('addTaskbtn no encontrado');
-            return;
+                // export the data
+                resolve(data);
+            });
         }
     
-        addTaskbtn.addEventListener('click', () => {
-            //verifications
-            if (!taskTextArea.value) {
-                alert('Please enter a task');
-                return;
-            }
-            if (addSelect.value === 'Select a category') {
-                alert('Please select a category');
-                return;
-            }
-            //get the radio checked
-            importanceRadio.forEach(radio => {
-                if (radio.checked) {
-                    data['importance'] = radio.id;
-                }
-            });
-            data['task'] = taskTextArea.value;
-            data['dueDate'] = calendar.value;
-            data['categorie'] = addSelect.value;
-    
-            // export the data
-            resolve(data);
-        });
-    }
-    
-    //In case the DOM is loading 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', logic)
-    } else {
-        logic();
-    }
-});
+        //In case the DOM is loading 
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', logic)
+        } else {
+            logic();
+        }
+    })
+}
