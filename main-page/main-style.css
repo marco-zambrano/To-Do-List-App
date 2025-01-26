@@ -295,6 +295,12 @@ body::-webkit-scrollbar-track {
 .tasks__tasks-container {
     display: flex;
     flex-direction: column;
+    row-gap: 30px;
+}
+
+.tasks__tasks-importance-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .tasks__tasks-importance-container > h2 {
@@ -302,11 +308,16 @@ body::-webkit-scrollbar-track {
     color: var(--base);
     width: 80%;
     padding: 0px 20px;
+    margin-bottom: 0;
 }
 .tasks__individual-task {
     font-size: 15px;
     margin-left: 25px;
     margin-top: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
 }
 .tasks__individual-task input[type="checkbox"] {
     appearance: none;
@@ -319,6 +330,7 @@ body::-webkit-scrollbar-track {
     border-radius: 3px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
     position: relative;
+    margin-top: 5px;
 }
 .tasks__individual-task input[type="checkbox"]:checked {
     background-color: var(--base);
@@ -340,6 +352,9 @@ body::-webkit-scrollbar-track {
 .tasks__individual-task label {
     margin-left: 10px;
     line-height: 2;
+    display: block;
+    word-wrap: break-word;
+    max-width: 85%;
 }
 .tasks__individual-task p {
     font-weight: bolder;
@@ -348,7 +363,22 @@ body::-webkit-scrollbar-track {
     color: #0000009a;
     font-weight: 400;
     font-size: 15px;
+    position: absolute;
+    bottom: -30px;
+    left: 20px;
 }   
+
+.tasks__individual-task svg {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    cursor: pointer;
+}
+.tasks__individual-task svg:hover {
+    stroke: red;
+}
+
+
 /* ----- TASKS ENDS------ */
 
 

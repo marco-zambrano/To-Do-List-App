@@ -14,7 +14,6 @@ html {
 .add {
     width: 100%;
     padding-top: 90px;
-    display: none;
     justify-content: center;
 }
 .add__wrapper {
