@@ -54,6 +54,19 @@ export function initializateAddScript() {
     })
 }
 
+// set select categorie options
+
+export const createOptions = () => {
+    const select = document.getElementById('add__task-select');
+    const categorieBtns = document.querySelectorAll('.categories__categories'); //cat avaibles
+    
+    categorieBtns.forEach(btn => {
+        const option = document.createElement('option');
+        option.value = btn.innerText.toLowerCase();
+        option.innerText = btn.innerText;
+        select.appendChild(option);
+    })
+}
 
 //we create a export function that return a new promise each time
 export const getData = () => {
@@ -111,3 +124,5 @@ export const getData = () => {
         }
     })
 }
+
+

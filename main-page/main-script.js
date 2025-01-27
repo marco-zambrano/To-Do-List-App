@@ -2,6 +2,7 @@
 const mainSection = document.getElementById('main');    
 const addSection = document.getElementById('add');  
 const newTaskbtn = document.querySelectorAll('.new-task-btn');  // new task buttons
+let categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // the categories containers
 
 const capitalize = (str) => str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 
@@ -67,15 +68,20 @@ const createTask = (task, date, container) => {
 }
 
 const setTask = (task, imp, date, cat) => {   
-    console.log(cat);
     
+    
+    
+    // categorieWrappers = document.querySelectorAll('.tasks__wrapper');   //category div
+    // console.log('Creating task: ', categorieWrappers);
+
+
     const importanceContainers = Array.from(document.querySelectorAll('.tasks__tasks-importance-container'));
-    const generalTaskContainer = document.getElementById('tasks__tasks-container'); // the container of the category 
+    const generalTaskContainer = document.getElementById('tasks__tasks-container'); // the container of the category saves different importance divs
 
     // in case there are categories 
     if (importanceContainers) {
         const importanceBox = importanceContainers.find(cont => cont.id === `${imp}-container`);
-        
+
         //In case this container exits
         if (importanceBox) {
             createTask(task, date, importanceBox);
@@ -92,7 +98,8 @@ const setTask = (task, imp, date, cat) => {
             createTask(task, date, newImportanceBox);   //create the task
             generalTaskContainer.appendChild(newImportanceBox); //and insert it in the generalTaskContainer
         }
-        
+    } else {
+        alert('No importance containers avaible');
     }
     // In case theres no any importance container, so its another category
 }
@@ -121,11 +128,12 @@ const loadAddSection = async () => {
         script.src = '../sections/add-task/add-script.js';
         document.body.appendChild(script);  
 
-        //  execute the logic exported from the script
+        //  Execute the logic exported from the script
         script.onload = async () => {
             try {
-                const {initializateAddScript, getData} = await import('../sections/add-task/add-script.js');
+                const {initializateAddScript, getData, createOptions} = await import('../sections/add-task/add-script.js');
                 initializateAddScript();    //for the dinamical display changer
+                createOptions();
                 const data = await getData(); // new task functions that gets the promise that resolves the data
                 const {task, importance, dueDate, categorie} = data;
                 // function to create the task
@@ -133,8 +141,7 @@ const loadAddSection = async () => {
             } catch (err) {
                 console.error('Error found: ', err);
             }
-        }
-    
+        }        
     } catch (error) {
         console.error('Error: ', error);
         addSection.innerHTML = 'Something went wrong opening this content';
@@ -159,7 +166,7 @@ const openCategorie = (cat) => {
     })
     cat.classList.toggle('clicked');    //chenge the color
 
-    const categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // the categories containers
+    categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // update the categories containers
     // Put display none of every categorie, less the one you clicked
     categorieWrappers.forEach(wrapper => {
         if (wrapper.id !== `${cat.innerText.toLowerCase()}-container`) {
@@ -190,6 +197,7 @@ const dialogCreateBtn = document.getElementById('dialog__create-btn');  //create
 
 //change the dialog display
 const changeDialogDisplay = () => {
+    dialogInput.value = '';
     dialogContainer.classList.toggle('visible');
     fog.classList.toggle('visible');
 }
@@ -307,7 +315,6 @@ const createCategoryDom = (cat) => {
     
 };
 
-
 const createCategorieBtn = () => {
     const inputValue = capitalize(dialogInput.value);
     // empty input
@@ -332,11 +339,9 @@ const createCategorieBtn = () => {
     selectCategorieContainer = document.querySelectorAll('.categories__categories');    //update this declaration
 
     changeDialogDisplay();  //Close the dialog
+    createCategoryDom(newBtn); //Create the DOM of the category
 
-
-    // FIX
-    //create the DOM for that category 
-    createCategoryDom(newBtn);
+    // SEND THE INFO TO ADD SCRIPT
 }
 
 dialogCreateBtn.addEventListener('click', (e) => {
