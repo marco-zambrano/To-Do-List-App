@@ -67,41 +67,31 @@ const createTask = (task, date, container) => {
     container.appendChild(taskBox);
 }
 
-const setTask = (task, imp, date, cat) => {   
+const setTask = (task, imp, date, cat) => { 
+    const selectedimportanceContainer = document.getElementById(`${cat}-${imp}-container`);
+    const generalTaskContainer = document.getElementById(`${cat}-tasks-container`);
+    console.log(generalTaskContainer);
     
     
-    
-    // categorieWrappers = document.querySelectorAll('.tasks__wrapper');   //category div
-    // console.log('Creating task: ', categorieWrappers);
+    if (selectedimportanceContainer) {
+        createTask(task, date, selectedimportanceContainer);
+    } else { //create new importance container it case id doesnt exits
 
+        // Container
+        const newImportanceContainer = document.createElement('div');
+        newImportanceContainer.classList.add('tasks__tasks-importance-container');
+        newImportanceContainer.classList.add(`${cat}-${imp}-container`);
+        newImportanceContainer.setAttribute('id', `${cat}-${imp}-container`);
 
-    const importanceContainers = Array.from(document.querySelectorAll('.tasks__tasks-importance-container'));
-    const generalTaskContainer = document.getElementById('tasks__tasks-container'); // the container of the category saves different importance divs
+        // Importance Subtitle
+        const subtitle = document.createElement('h2');
+        subtitle.classList.add('tasks__tasks-importance-title');
+        subtitle.innerText = `${capitalize(imp)}.`;
+        newImportanceContainer.appendChild(subtitle); //Insert the subtitle
 
-    // in case there are categories 
-    if (importanceContainers) {
-        const importanceBox = importanceContainers.find(cont => cont.id === `${imp}-container`);
-
-        //In case this container exits
-        if (importanceBox) {
-            createTask(task, date, importanceBox);
-        } else {    //in case this importance container doesnt exits, we create a new one
-            const newImportanceBox = document.createElement('div');
-            newImportanceBox.classList.add('tasks__tasks-importance-container');
-            newImportanceBox.setAttribute('id', `${imp}-container`);
-            // Importance Subtitle
-            const subtitle = document.createElement('h2');
-            subtitle.classList.add('tasks__tasks-importance-title');
-            subtitle.innerText = `${capitalize(imp)}.`;
-            
-            newImportanceBox.appendChild(subtitle); //Insert the subtitle
-            createTask(task, date, newImportanceBox);   //create the task
-            generalTaskContainer.appendChild(newImportanceBox); //and insert it in the generalTaskContainer
-        }
-    } else {
-        alert('No importance containers avaible');
+        createTask(task, date, newImportanceContainer);   //create the task
+        generalTaskContainer.appendChild(newImportanceContainer);   // Insert it in the general tasks
     }
-    // In case theres no any importance container, so its another category
 }
 
 // Load the add-task section and gets its information
@@ -135,6 +125,8 @@ const loadAddSection = async () => {
                 initializateAddScript();    //for the dinamical display changer
                 createOptions();
                 const data = await getData(); // new task functions that gets the promise that resolves the data
+                console.log(data);
+                
                 const {task, importance, dueDate, categorie} = data;
                 // function to create the task
                 setTask(task, importance, dueDate, categorie);
@@ -240,12 +232,13 @@ const createCategoryDom = (cat) => {
     // Body
     const bodyContainer = document.createElement('div');
     bodyContainer.classList.add('tasks__tasks-container');
-    bodyContainer.setAttribute('id', 'tasks__tasks-container');
+    bodyContainer.setAttribute('id', `${cat.innerText.toLowerCase()}-tasks-container`);
 
     // Importance Container
     const importanceContainer = document.createElement('div');
     importanceContainer.classList.add('tasks__tasks-importance-container');
-    importanceContainer.setAttribute('id', 'normal-container');
+    importanceContainer.classList.add(`${cat.innerText.toLowerCase()}-normal-container`);
+    importanceContainer.setAttribute('id', `${cat.innerText.toLowerCase()}-normal-container`);
 
     // Importance Title
     const importanceTitle = document.createElement('h2');
