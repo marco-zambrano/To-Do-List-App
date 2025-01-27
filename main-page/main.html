@@ -44,7 +44,7 @@
         <section class="categories">
             <div class="categories__header">
                 <h2>My Categories.</h2>
-                <button class="categories__add-btn">
+                <button class="categories__add-btn" id="categories__add-btn">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -60,13 +60,13 @@
                     </svg>
                 </button>
             </div>
-            <div class="categories__categories-container">
+            <div class="categories__categories-container" id="categories__categories-container">
                 <button class="categories__categories">General</button>
-                <button class="categories__categories">Gym</button>
             </div>
             <button class="categories__new-task-btn new-task-btn" id="new-task">+ New Task</button>
         </section>
-        <section class="tasks">
+        <section class="tasks" id="tasks">
+
             <div class="tasks__wrapper" id="general-container">
                 <div class="tasks__categorie-container">
                     <h2 class="tasks__categorie-title" id="general-title">General.</h2>
@@ -85,30 +85,23 @@
                 </div>
             </div>
 
-            
-            <!-- ANOTHER TASKS -->
-
-
-
-            <div class="tasks__wrapper" id="gym-container" style="display: none;">
-                <div class="tasks__categorie-container">
-                    <h2 class="tasks__categorie-title" id="gym-title">General.</h2>
-                    <button class="tasks__categorie-new-task-btn new-task-btn">+ New Task</button>
-                </div>
-                <div class="tasks__tasks-container" id="tasks__tasks-container">
-                    <div class="tasks__tasks-importance-container" id="normal-container">
-                        <h2 class="tasks__tasks-importance-title">Normal.</h2>
-                        <div class="tasks__individual-task">
-                            <input type="checkbox" name="tarea" id="example" class="tasks__individual-checkbox">
-                            <label for="example" class="tasks__individual-checkbox-label">Example task</label>
-                            <p>No due date</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="example"> <path d="M4 7l16 0"></path> <path d="M10 11l0 6"></path> <path d="M14 11l0 6"></path> <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path> <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path> </svg> 
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
+
+    <div id="fog" class="fog"></div>
+    <dialog class="dialog" id="dialog">
+        <div class="dialog__wrapper">
+            <h2>Create a new category.</h2>
+            <form class="dialog__form">
+                <label for="dialog__input" class="dialog__label">Categorie name:</label>
+                <input type="text" id="dialog__input" class="dialog__input">
+                <div class="dialog__btns">
+                    <button id="dialog__cancel-btn" class="dialog__btn--gray">Cancel</button>
+                    <button id="dialog__create-btn" class="dialog__btn--blue">Create</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
 
     <section class="add" id="add" style="display: none;"></section>
 

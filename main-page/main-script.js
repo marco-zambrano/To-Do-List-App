@@ -1,7 +1,9 @@
-const newTaskbtn = document.querySelectorAll('.new-task-btn');  // new task buttons
-// Page sections
+// CREATE TASK  AND LOAD CONTENT SECTION
 const mainSection = document.getElementById('main');    
 const addSection = document.getElementById('add');  
+const newTaskbtn = document.querySelectorAll('.new-task-btn');  // new task buttons
+
+const capitalize = (str) => str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 
 const createTask = (task, date, container) => {
     const fragment = document.createDocumentFragment(); //use fragments, so we dont manipulate the DOM with each creation
@@ -64,9 +66,9 @@ const createTask = (task, date, container) => {
     container.appendChild(taskBox);
 }
 
-const capitalize = (str) => str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
-
 const setTask = (task, imp, date, cat) => {   
+    console.log(cat);
+    
     const importanceContainers = Array.from(document.querySelectorAll('.tasks__tasks-importance-container'));
     const generalTaskContainer = document.getElementById('tasks__tasks-container'); // the container of the category 
 
@@ -85,18 +87,17 @@ const setTask = (task, imp, date, cat) => {
             const subtitle = document.createElement('h2');
             subtitle.classList.add('tasks__tasks-importance-title');
             subtitle.innerText = `${capitalize(imp)}.`;
-
+            
             newImportanceBox.appendChild(subtitle); //Insert the subtitle
             createTask(task, date, newImportanceBox);   //create the task
             generalTaskContainer.appendChild(newImportanceBox); //and insert it in the generalTaskContainer
         }
-
+        
     }
     // In case theres no any importance container, so its another category
 }
 
-
-// Load the add-task section
+// Load the add-task section and gets its information
 const loadAddSection = async () => {
     mainSection.style.display = 'none';
     try {
@@ -146,32 +147,19 @@ newTaskbtn.forEach(btn => {
 
 
 
-// Categories currently avaible
-const selectCategorieContainer = document.querySelectorAll('.categories__categories');
-// The categorie titles of my tasks
-const taskCategorieTitle = Array.from(document.querySelectorAll('.tasks__categorie-title'));
+// CATEGORY SECTION
+let selectCategorieContainer = document.querySelectorAll('.categories__categories'); // Categories currently avaible
 
-// CREATING ANOTHER CATEGORIE WRAPP, WE HAVE TO DECLARE INSIDE THAT FUNC, AND NOT ONCE
-const categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // the categories containers
-
-
-const setCategorie = (cat) => {
-    //if other buttons are actived, set them by default
+const openCategorie = (cat) => {
+    //if other buttons are actived, set them by default color
     selectCategorieContainer.forEach(categorie => {
         if (categorie.classList.contains('clicked')) {
             categorie.classList.toggle('clicked');
         }
     })
-
-    //search the respective title
-    taskCategorieTitle.filter(title => {
-        if (title.id === `${cat.innerText.toLowerCase()}-title`) {
-            title.innerText = cat.innerText;
-        }
-    });
-
     cat.classList.toggle('clicked');    //chenge the color
 
+    const categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // the categories containers
     // Put display none of every categorie, less the one you clicked
     categorieWrappers.forEach(wrapper => {
         if (wrapper.id !== `${cat.innerText.toLowerCase()}-container`) {
@@ -180,10 +168,183 @@ const setCategorie = (cat) => {
             wrapper.style.display = 'flex'; 
         }
     })
-}   
+} 
 
-selectCategorieContainer.forEach(categorie => {
-    categorie.addEventListener('click', () => {
-        setCategorie(categorie);
+//hear the father container, in case the buttons amount changes (DOM changes)
+const categorieBtnContainer = document.getElementById('categories__categories-container');
+categorieBtnContainer.addEventListener('click', (event) => {
+    const categorie = event.target.closest('.categories__categories');
+    if (categorie) {
+        openCategorie(categorie);
+    }
+})
+
+//  Create categorie btn
+const addCategorieBtn = document.getElementById('categories__add-btn');
+// Dialog 
+const fog = document.getElementById('fog');
+const dialogContainer = document.getElementById('dialog');
+const dialogInput = document.getElementById('dialog__input');
+const dialogCancelBtn = document.getElementById('dialog__cancel-btn');  // cancel btn
+const dialogCreateBtn = document.getElementById('dialog__create-btn');  //create btn
+
+//change the dialog display
+const changeDialogDisplay = () => {
+    dialogContainer.classList.toggle('visible');
+    fog.classList.toggle('visible');
+}
+// Open the dialog
+addCategorieBtn.addEventListener('click', () => {
+    changeDialogDisplay();
+})
+
+// FUNCTION TO CHECK
+const createCategoryDom = (cat) => {
+    // Main container
+    const taskSection = document.getElementById('tasks');
+    
+    // Wrapper
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('tasks__wrapper');
+    wrapper.setAttribute('id', `${cat.innerText.toLowerCase()}-container`);
+    wrapper.style.display = 'none';
+
+    // Header
+    const headerContainer = document.createElement('div');
+    headerContainer.classList.add('tasks__categorie-container');
+
+    // Header - h2
+    const headerTitle = document.createElement('h2');
+    headerTitle.setAttribute('id', `${cat.innerText.toLowerCase()}-title`);
+    headerTitle.classList.add('tasks__categorie-title');
+    headerTitle.innerText = cat.innerText + '.';
+    headerContainer.appendChild(headerTitle);
+
+    // Header - button
+    const headerBtn = document.createElement('button');
+    headerBtn.classList.add('tasks__categorie-new-task-btn', 'new-task-btn');
+    headerBtn.innerText = '+ New Task';
+    headerContainer.appendChild(headerBtn);
+
+    // Add header to wrapper
+    wrapper.appendChild(headerContainer);
+
+    // Body
+    const bodyContainer = document.createElement('div');
+    bodyContainer.classList.add('tasks__tasks-container');
+    bodyContainer.setAttribute('id', 'tasks__tasks-container');
+
+    // Importance Container
+    const importanceContainer = document.createElement('div');
+    importanceContainer.classList.add('tasks__tasks-importance-container');
+    importanceContainer.setAttribute('id', 'normal-container');
+
+    // Importance Title
+    const importanceTitle = document.createElement('h2');
+    importanceTitle.classList.add('tasks__tasks-importance-title');
+    importanceTitle.innerText = 'Normal.';
+    importanceContainer.appendChild(importanceTitle);
+
+    // Individual Task Container
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('tasks__individual-task');
+
+    // Input
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.name = 'tarea';
+    checkbox.id = 'example';
+    checkbox.classList.add('tasks__individual-checkbox');
+    taskContainer.appendChild(checkbox);
+
+    // Label
+    const label = document.createElement('label');
+    label.htmlFor = 'example';
+    label.classList.add('tasks__individual-checkbox-label');
+    label.textContent = 'Example task';
+    taskContainer.appendChild(label);
+
+    // Paragraph
+    const paragraph = document.createElement('p');
+    paragraph.textContent = 'No due date';
+    taskContainer.appendChild(paragraph);
+
+    // SVG Icon
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('stroke-width', '1');
+    svg.setAttribute('width', '20');
+    svg.setAttribute('height', '20');
+    svg.id = 'example';
+
+    // Add SVG paths
+    const pathData = [
+        { d: 'M4 7l16 0' },
+        { d: 'M10 11l0 6' },
+        { d: 'M14 11l0 6' },
+        { d: 'M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12' },
+        { d: 'M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3' }
+    ];
+
+    pathData.forEach(data => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', data.d);
+        svg.appendChild(path);
     });
+
+    taskContainer.appendChild(svg);
+    importanceContainer.appendChild(taskContainer);
+    bodyContainer.appendChild(importanceContainer);
+
+    // Add body to wrapper
+    wrapper.appendChild(bodyContainer);
+    taskSection.appendChild(wrapper);
+    
+};
+
+
+const createCategorieBtn = () => {
+    const inputValue = capitalize(dialogInput.value);
+    // empty input
+    if (!inputValue) {
+        alert('Please insert the categorie name first');
+        return;
+    }
+
+    const currentCategorieBtn = Array.from(document.querySelectorAll('.categories__categories'));
+    //check if the categorie wont be repeated
+    const isCategorieRepeated  = currentCategorieBtn.some(cat => cat.innerText.toLowerCase() === inputValue.toLowerCase());
+    if (isCategorieRepeated) {
+        alert('This categorie already exits, please insert another one');
+        return;
+    }
+    
+    //create and insert categorie btn
+    const newBtn = document.createElement('button');
+    newBtn.classList.add('categories__categories');
+    newBtn.innerText = inputValue;
+    categorieBtnContainer.appendChild(newBtn);
+    selectCategorieContainer = document.querySelectorAll('.categories__categories');    //update this declaration
+
+    changeDialogDisplay();  //Close the dialog
+
+
+    // FIX
+    //create the DOM for that category 
+    createCategoryDom(newBtn);
+}
+
+dialogCreateBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    createCategorieBtn();
+})
+
+dialogCancelBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeDialogDisplay();
 })
