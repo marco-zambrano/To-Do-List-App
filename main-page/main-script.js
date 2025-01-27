@@ -2,12 +2,6 @@ const newTaskbtn = document.querySelectorAll('.new-task-btn');  // new task butt
 // Page sections
 const mainSection = document.getElementById('main');    
 const addSection = document.getElementById('add');  
-// Categories currently avaible
-const selectCategorieContainer = document.querySelectorAll('.categories__categories');
-// the Categorie Title of my tasks
-const taskCategorieTitle= document.getElementById('tasks__categorie-title');
-// task containers for manipulation
-
 
 const createTask = (task, date, container) => {
     const fragment = document.createDocumentFragment(); //use fragments, so we dont manipulate the DOM with each creation
@@ -64,9 +58,6 @@ const createTask = (task, date, container) => {
         svg.appendChild(path);
     });
     fragment.appendChild(svg);
-
-
-
 
     //insert it in the taskBox and in the respective container
     taskBox.appendChild(fragment);
@@ -155,14 +146,44 @@ newTaskbtn.forEach(btn => {
 
 
 
+// Categories currently avaible
+const selectCategorieContainer = document.querySelectorAll('.categories__categories');
+// The categorie titles of my tasks
+const taskCategorieTitle = Array.from(document.querySelectorAll('.tasks__categorie-title'));
 
-//THIS WORKS
-// const setCategorieTitle = (title) => {
-//     taskCategorieTitle.innerText = title;
-// }   
-// selectCategorieContainer.forEach(categorie => {
-//     categorie.addEventListener('click', () => {
-//         // console.log(categorie.innerText);
-//         setCategorieTitle(categorie.innerText);
-//     } )
-// })
+// CREATING ANOTHER CATEGORIE WRAPP, WE HAVE TO DECLARE INSIDE THAT FUNC, AND NOT ONCE
+const categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // the categories containers
+
+
+const setCategorie = (cat) => {
+    //if other buttons are actived, set them by default
+    selectCategorieContainer.forEach(categorie => {
+        if (categorie.classList.contains('clicked')) {
+            categorie.classList.toggle('clicked');
+        }
+    })
+
+    //search the respective title
+    taskCategorieTitle.filter(title => {
+        if (title.id === `${cat.innerText.toLowerCase()}-title`) {
+            title.innerText = cat.innerText;
+        }
+    });
+
+    cat.classList.toggle('clicked');    //chenge the color
+
+    // Put display none of every categorie, less the one you clicked
+    categorieWrappers.forEach(wrapper => {
+        if (wrapper.id !== `${cat.innerText.toLowerCase()}-container`) {
+            wrapper.style.display = 'none'; 
+        } else {
+            wrapper.style.display = 'flex'; 
+        }
+    })
+}   
+
+selectCategorieContainer.forEach(categorie => {
+    categorie.addEventListener('click', () => {
+        setCategorie(categorie);
+    });
+})
