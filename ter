@@ -1,0 +1,137 @@
+[33mcommit b82ff57a2c682cb3a2e15f7e0a080cce1175f692[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Mon Jan 27 18:03:31 2025 -0500
+
+    Create tasks by category and importance
+
+[33mcommit 1ea27a6b1b56e0decbacb4ed2516167fed9e5676[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Mon Jan 27 16:09:38 2025 -0500
+
+    dinamical select options, with the categories avaible
+
+[33mcommit 90cd7eb9a97ed10c59d5412746b2a57613776bcf[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Mon Jan 27 12:41:03 2025 -0500
+
+    Create category button, and its DOM
+
+[33mcommit df33ff8c664c204ce55d145fb4b415f82834ef73[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Sun Jan 26 23:49:42 2025 -0500
+
+    Create tasks by different importance
+
+[33mcommit 6b74e58c21a32e72956837fc4fe43b724ad31604[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Sat Jan 25 22:38:41 2025 -0500
+
+    delete buttons, not functional yet
+
+[33mcommit 79faaa8894f5b48fc8c11055e31174afd7afccd5[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Sat Jan 25 11:06:01 2025 -0500
+
+    create task of the same category and importance
+
+[33mcommit 7cd39ca073424c9782c1bc9508af77c20f182e23[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Fri Jan 24 21:58:08 2025 -0500
+
+    get data from add-task section to main section, using promises
+
+[33mcommit 4967c507ee9869288a5a01ba64e50761aaa68e40[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Fri Jan 24 00:57:22 2025 -0500
+
+    add-task, select focus and blur dinamically changes with the svg
+
+[33mcommit 5104b38d44550e5ad881f4612544c32e85f17c02[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Thu Jan 23 23:46:45 2025 -0500
+
+    add-task toggled svgs
+
+[33mcommit a917ce91adad24353e29cfb7c3977281ad33eac6[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Tue Jan 21 00:26:32 2025 -0500
+
+    Calendar selection
+
+[33mcommit 3c9749481eb3303d184d5a9bc54c726eaadd3242[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Sun Jan 19 15:14:19 2025 -0500
+
+    Calendar responsive design
+
+[33mcommit 355eb30969919a77955cbdd1c93ed8f3431807c6[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Sun Jan 19 01:14:27 2025 -0500
+
+    Calendar mobile and desktop view
+
+[33mcommit 3cbc0dd4eecf581b872d68219d8d63b9b277ff66[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Sat Jan 18 01:23:38 2025 -0500
+
+    Calendar, initial concept fixed
+
+[33mcommit e0dd246387cbe0fa77119e9358af631c59819124[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Fri Jan 17 20:49:32 2025 -0500
+
+    Calendar model added - and dinamical display fixed
+
+[33mcommit 9869cb204581fd0b6566b77897c13eeb465f43e7[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Thu Jan 16 14:04:44 2025 -0500
+
+    add-task - dinamically script inserction
+
+[33mcommit 331b7395259b3b57ef37065e22a1197d03ee26cd[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Wed Jan 15 22:41:01 2025 -0500
+
+    dinamic display main-page/edit-page with buttons - basic concept
+
+[33mcommit 58a1c7f6f29c1150e639d91edbccacd194915278[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Wed Jan 15 20:41:17 2025 -0500
+
+    Add task section - Initial desktop model
+
+[33mcommit ef9e40cd6b8fec8c8e29a7ddb1baa69c9b9eb32e[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Wed Jan 15 17:06:38 2025 -0500
+
+    Add task section - initial mobile version model
+
+[33mcommit f0687cab0dc4e4e7a97dff492b96246819f5b4b4[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Tue Jan 14 13:31:55 2025 -0500
+
+    body scroll bar desing
+
+[33mcommit 2c2719df7624a97f0f252365843d09c86d2e621f[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Tue Jan 14 13:10:48 2025 -0500
+
+    categories container features, and adaptative overflow for that container
+
+[33mcommit 860ad5f0ec692ced9c2749e240400915ea2b3f9c[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Tue Jan 14 10:52:59 2025 -0500
+
+    header and cateogries fixed, mobile and desktop main page model established
+
+[33mcommit 1ec0d44579da38a898f0ee74733bec5ba69c097e[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Tue Jan 14 00:49:21 2025 -0500
+
+    hover animations for buttons and resized container widths
+
+[33mcommit 765fa39ca3aeb1f979779461b6bb1630cf608ff7[m
+Author: Marco <marcoadrianzambra@gmail.com>
+Date:   Mon Jan 13 23:57:05 2025 -0500
+
+    Initial mobile version
