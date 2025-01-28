@@ -1,0 +1,71 @@
+<body>
+    <section class="add__wrapper">
+        <h2>Add a task.</h2>
+        <section class="add__title-form">
+            <label for="add__task-textarea">Task.</label>
+            <textarea name="textarea" class="add__task-textarea" id="add__task-textarea" placeholder="Write your task"></textarea>
+        </section>
+
+        <section class="add__priority-container">
+            <label for="normal" > 
+                <input type="radio" name="priority" id="normal" checked> 
+                <span></span>
+                Normal
+            </label>
+            <label for="important">
+                <input type="radio" name="priority" id="important"> 
+                <span></span>
+                Important
+            </label>
+            <label for="urgent">
+                <input type="radio" name="priority" id="urgent"> 
+                <span></span>
+                Urgent
+            </label>
+        </section>
+
+        <div id="relative-for-btns">
+            <section class="add__atributes-container">
+                <div class="add__atribute__calendar-container ">
+                    <div class="add__atribute atribute__calendar">
+                        <a href="#add__atribute__calendar" id="link-svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="calendar-svg"> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M4 11h16"></path> <path d="M11 15h1"></path> <path d="M12 15v3"></path> </svg> 
+                        </a>
+                        <div class="add__atribute-text">
+                            <h3>Due Date.</h3>
+                            <p>Select a deadline date for the task <span>(optional)</span></p>
+                        </div>
+                    </div>
+                    <div class="add__atribute__calendar" id="add__atribute__calendar">
+                        <calendar-date id="calendar" min="2025-01-01">
+                            <svg aria-label="Previous" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+                                <path d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                            </svg>
+                            <svg aria-label="Next" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                            </svg>
+                            <div class="grid">
+                                <calendar-month id="calendar-month"></calendar-month>
+                            </div>
+                        </calendar-date>
+                    </div>
+                </div>
+                <div class="add__atribute atribute__category">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="categories-svg"> <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path> <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"></path> </svg> 
+                    <div class="add__atribute-text">
+                        <h3>Category.</h3>
+                        <Select name="add__categorie__selector" id="add__task-select">
+                            <option selected disabled hidden>Select a category</option>
+                        </Select>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="add__btns-container">
+                <button class="btn--gray" id="cancel-btn">Cancel</button>
+                <button class="btn--blue" id="add-task-btn">Add Task</button>
+            </section> 
+        </div>
+
+    </section>
+</body>

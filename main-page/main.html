@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main-style.css">
+    <link rel="stylesheet" href="../sections/add-task/add-style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand-container">
+            <div class="header__brand-logo">
+                <img src="/assets/logo.png" alt="logo">
+            </div>
+            <h2 class="header__brand-name">Task Manager</h2>
+        </div>
+        <div class="header__options-container">
+            <button class="header__option"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" stroke-width="1.25"> <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path> <path d="M21 21l-6 -6"></path> </svg> </button>
+            <button class="header__option new-task-btn"><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+            </svg></button>
+            <a class="header__option" href="#">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile picture">
+            </a>
+        </div>
+    </header>
+
+    <main class="wrapper" id="main">
+        <section class="categories">
+            <div class="categories__header">
+                <h2>My Categories.</h2>
+                <button class="categories__add-btn" id="categories__add-btn">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 5l0 14" />
+                        <path d="M5 12l14 0" />
+                    </svg>
+                </button>
+            </div>
+            <div class="categories__categories-container" id="categories__categories-container">
+                <button class="categories__categories">General</button>
+            </div>
+            <button class="categories__new-task-btn new-task-btn" id="new-task">+ New Task</button>
+        </section>
+        <section class="tasks" id="tasks">
+
+            <div class="tasks__wrapper" id="general-container">
+                <div class="tasks__categorie-container">
+                    <h2 class="tasks__categorie-title" id="general-title">General.</h2>
+                    <button class="tasks__categorie-new-task-btn new-task-btn">+ New Task</button>
+                </div>
+                <div class="tasks__tasks-container" id="general-tasks-container">
+                    
+                    <div class="tasks__tasks-importance-container general-normal-container" id="general-normal-container">
+                        <h2 class="tasks__tasks-importance-title">Normal.</h2>
+                        <div class="tasks__individual-task">
+                            <input type="checkbox" name="tarea" id="example" class="tasks__individual-checkbox">
+                            <label for="example" class="tasks__individual-checkbox-label">Example task</label>
+                            <p>No due date</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1" id="example"> <path d="M4 7l16 0"></path> <path d="M10 11l0 6"></path> <path d="M14 11l0 6"></path> <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path> <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path> </svg> 
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="fog" class="fog"></div>
+    <dialog class="dialog" id="dialog">
+        <div class="dialog__wrapper">
+            <h2>Create a new category.</h2>
+            <form class="dialog__form">
+                <label for="dialog__input" class="dialog__label">Categorie name:</label>
+                <input type="text" id="dialog__input" class="dialog__input">
+                <div class="dialog__btns">
+                    <button id="dialog__cancel-btn" class="dialog__btn--gray">Cancel</button>
+                    <button id="dialog__create-btn" class="dialog__btn--blue">Create</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <section class="add" id="add" style="display: none;"></section>
+
+    <script src="main-script.js" type="module"></script>
+</body>
+</html>
