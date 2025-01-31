@@ -3,11 +3,12 @@ const mainSection = document.getElementById('main');
 const addSection = document.getElementById('add');  
 const newTaskbtn = document.querySelectorAll('.new-task-btn');  // new task buttons
 let categorieWrappers = document.querySelectorAll('.tasks__wrapper'); // the categories containers
-
 const capitalize = (str) => str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 
+
+// -- CREATE TASK
 const createTask = (task, date, container) => {
-    const fragment = document.createDocumentFragment(); //use fragments, so we dont manipulate the DOM with each creation
+    const fragment = document.createDocumentFragment();
 
     //create the task box
     const taskBox = document.createElement('div');
@@ -45,7 +46,8 @@ const createTask = (task, date, container) => {
     svg.setAttribute('width', '20');
     svg.setAttribute('height', '20');
     svg.setAttribute('stroke-width', '1');
-    svg.setAttribute('id', task.slice(0, 6));
+    // svg.setAttribute('id', task.slice(0, 6));
+    svg.classList.add('delete-btn');
 
     // Add the paths to the SVG
     const paths = [
@@ -70,8 +72,6 @@ const createTask = (task, date, container) => {
 const setTask = (task, imp, date, cat) => { 
     const selectedimportanceContainer = document.getElementById(`${cat}-${imp}-container`);
     const generalTaskContainer = document.getElementById(`${cat}-tasks-container`);
-    console.log(generalTaskContainer);
-    
     
     if (selectedimportanceContainer) {
         createTask(task, date, selectedimportanceContainer);
@@ -94,6 +94,9 @@ const setTask = (task, imp, date, cat) => {
     }
 }
 
+
+
+// -- LOAD ADD TASK SECTION
 // Load the add-task section and gets its information
 const loadAddSection = async () => {
     mainSection.style.display = 'none';
@@ -125,7 +128,6 @@ const loadAddSection = async () => {
                 initializateAddScript();    //for the dinamical display changer
                 createOptions();
                 const data = await getData(); // new task functions that gets the promise that resolves the data
-                console.log(data);
                 
                 const {task, importance, dueDate, categorie} = data;
                 // function to create the task
@@ -146,6 +148,7 @@ newTaskbtn.forEach(btn => {
 
 
 
+// -- SET AND CREATE CATEGORY
 // CATEGORY SECTION
 let selectCategorieContainer = document.querySelectorAll('.categories__categories'); // Categories currently avaible
 
@@ -281,7 +284,7 @@ const createCategoryDom = (cat) => {
     svg.setAttribute('stroke-width', '1');
     svg.setAttribute('width', '20');
     svg.setAttribute('height', '20');
-    svg.id = 'example';
+    svg.setAttribute('class', 'delete-btn');
 
     // Add SVG paths
     const pathData = [
@@ -346,3 +349,13 @@ dialogCancelBtn.addEventListener('click', (e) => {
     e.preventDefault();
     changeDialogDisplay();
 })
+
+
+
+// -- DELETE TASK
+document.querySelector('.tasks').addEventListener('click', (event) => {
+    if (event.target.classList.contains("delete-btn")) {
+        const task = event.target.closest(".tasks__individual-task");
+        task.remove();
+    }
+});
