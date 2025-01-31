@@ -142,9 +142,13 @@ const loadAddSection = async () => {
     }
 }  
 
-newTaskbtn.forEach(btn => {
-    btn.addEventListener('click', loadAddSection);
-});
+document.body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('new-task-btn')) {
+        console.log(event.target);
+        
+        loadAddSection();
+    }
+})
 
 
 
