@@ -13,3 +13,22 @@ When adding the task you have different options:
 - Importance of the task
 - Add a deadline (optional)
 - Select which category it belongs to
+
+## 🚀 How to Run the Project Correctly
+This project uses **JavaScript modules (`type="module"`)** and fetches **local files**, which can cause issues if run directly using `file://`.  
+To avoid CORS errors and browser restrictions, **you must run it using a local server**.
+
+### ✅ Option 1: Use Live Server (Recommended)
+If you use **VS Code**, follow these steps:
+1. Install the **Live Server** extension if you haven't already.
+2. Open the project in VS Code.
+3. Right-click on `index.html` and select **"Open with Live Server"**.
+4. The project will open at `http://127.0.0.1:5500/` without issues.
+
+### ✅ Option 2: Start a Server with Python
+If you don’t use Live Server, you can start a simple server using Python:
+1. Open the terminal in the project folder.
+2. Run the following command:
+   ```sh
+   python -m http.server 5500
+
