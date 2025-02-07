@@ -14,7 +14,7 @@ When adding the task you have different options:
 - Add a deadline (optional)
 - Select which category it belongs to
 
-## 🚀 How to Run the Project Correctly
+## ‼️ How to Run the Project Correctly
 This project uses **JavaScript modules (`type="module"`)** and fetches **local files**, which can cause issues if run directly using `file://`.  
 To avoid CORS errors and browser restrictions, **you must run it using a local server**.
 
